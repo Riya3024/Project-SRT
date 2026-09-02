@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-srt.local/contracts/model_metadata.schema.json",
+  "title": "Project SRT Model Metadata Contract",
+  "description": "Contract describing an AI/ML model used by Project SRT.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_id",
+    "model_name",
+    "model_type",
+    "version",
+    "framework",
+    "source",
+    "license",
+    "purpose",
+    "input",
+    "output",
+    "status"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique identifier for the model."
+    },
+    "model_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable model name."
+    },
+    "model_type": {
+      "type": "string",
+      "enum": [
+        "DETECTION",
+        "TRACKING",
+        "POSE",
+        "ACTION_RECOGNITION",
+        "ANOMALY_DETECTION",
+        "FACE_DETECTION",
+        "FACE_EMBEDDING",
+        "ANPR",
+        "REID",
+        "OCR",
+        "OTHER"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "framework": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Verified source or provider of the model."
+    },
+    "source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Applicable model/software license."
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "image_size": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fps": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "classes": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "device": {
+      "type": "string",
+      "enum": [
+        "GPU",
+        "CPU",
+        "AUTO"
+      ]
+    },
+    "fallback_model_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "confidence_threshold": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "FALLBACK",
+        "DISABLED",
+        "EXPERIMENTAL"
+      ]
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Whether the model, version, source, and license have been verified."
+    },
+    "notes": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

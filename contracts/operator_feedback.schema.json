@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-srt.local/contracts/operator_feedback.schema.json",
+  "title": "Project SRT Operator Feedback Contract",
+  "description": "Contract for human operator decisions and feedback on events or incidents.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "feedback_id",
+    "operator_id",
+    "action",
+    "timestamp"
+  ],
+  "properties": {
+    "feedback_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "operator_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "incident_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "CONFIRM",
+        "DISMISS",
+        "ESCALATE"
+      ]
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "comment": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "model_retraining_eligible": {
+      "type": "boolean"
+    }
+  }
+}

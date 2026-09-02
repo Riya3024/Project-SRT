@@ -1,38 +1,64 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Project SRT Evidence Contract",
+
   "type": "object",
-  "required": [
-    "schema_version",
-    "evidence_id",
-    "incident_id",
-    "evidence_type",
-    "created_at"
-  ],
+
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
     "evidence_id": {
       "type": "string"
     },
+
     "incident_id": {
+      "type": ["string", "null"]
+    },
+
+    "event_id": {
+      "type": ["string", "null"]
+    },
+
+    "camera_id": {
       "type": "string"
     },
-    "evidence_type": {
+
+    "type": {
       "type": "string",
       "enum": [
+        "VIDEO",
         "SNAPSHOT",
-        "VIDEO_CLIP",
-        "TIMELINE"
+        "FRAME",
+        "ANPR_CROP",
+        "FACE_CROP"
       ]
     },
-    "storage_reference": {
+
+    "storage_uri": {
       "type": "string"
     },
+
+    "start_time": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+
+    "end_time": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+
+    "sha256": {
+      "type": ["string", "null"]
+    },
+
     "created_at": {
       "type": "string",
       "format": "date-time"
     }
-  }
+  },
+
+  "required": [
+    "evidence_id",
+    "camera_id",
+    "type",
+    "storage_uri"
+  ]
 }

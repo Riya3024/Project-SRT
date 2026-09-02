@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-srt.local/contracts/camera_health.schema.json",
+  "title": "Project SRT Camera Health Contract",
+  "description": "Contract for camera and video-stream health monitoring.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "camera_id",
+    "timestamp",
+    "status",
+    "fps",
+    "latency_ms",
+    "dropped_frames",
+    "reconnect_attempts",
+    "reasons"
+  ],
+  "properties": {
+    "camera_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ONLINE",
+        "OFFLINE",
+        "DEGRADED"
+      ]
+    },
+    "fps": {
+      "type": "number",
+      "minimum": 0
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "dropped_frames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reconnect_attempts": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "frozen_frame": {
+      "type": "boolean"
+    },
+    "black_frame": {
+      "type": "boolean"
+    },
+    "very_dark_video": {
+      "type": "boolean"
+    },
+    "blurry_video": {
+      "type": "boolean"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_frame_timestamp": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

@@ -1,42 +1,78 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Project SRT Event Contract",
+
   "type": "object",
-  "required": [
-    "schema_version",
-    "event_id",
-    "camera_id",
-    "event_type",
-    "timestamp",
-    "confidence",
-    "risk_score"
-  ],
+
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
     "event_id": {
       "type": "string"
     },
+
     "camera_id": {
       "type": "string"
     },
-    "event_type": {
-      "type": "string"
-    },
+
     "timestamp": {
       "type": "string",
       "format": "date-time"
     },
+
+    "event_type": {
+      "type": "string"
+    },
+
     "confidence": {
       "type": "number",
       "minimum": 0,
       "maximum": 1
     },
-    "risk_score": {
-      "type": "number",
+
+    "anomaly_score": {
+      "type": ["number", "null"],
       "minimum": 0,
       "maximum": 100
+    },
+
+    "risk_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+
+    "risk_level": {
+      "type": ["string", "null"]
+    },
+
+    "track_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "status": {
+      "type": "string",
+      "enum": [
+        "DETECTED",
+        "CONFIRMED",
+        "DISMISSED",
+        "ESCALATED"
+      ]
     }
-  }
+  },
+
+  "required": [
+    "event_id",
+    "camera_id",
+    "timestamp",
+    "event_type",
+    "confidence"
+  ]
 }

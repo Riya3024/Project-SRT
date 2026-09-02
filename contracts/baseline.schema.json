@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+    "camera_id": {
+      "type": "string"
+    },
+
+    "zone_id": {
+      "type": ["string", "null"]
+    },
+
+    "time_bucket": {
+      "type": "string"
+    },
+
+    "expected_occupancy": {
+      "type": "number"
+    },
+
+    "expected_velocity": {
+      "type": "number"
+    },
+
+    "expected_density": {
+      "type": "number"
+    },
+
+    "expected_event_frequency": {
+      "type": "number"
+    },
+
+    "sample_count": {
+      "type": "integer"
+    },
+
+    "baseline_confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+
+    "deviation_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+
+  "required": [
+    "camera_id",
+    "time_bucket"
+  ]
+}

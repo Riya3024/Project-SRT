@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "srt/common.schema.json",
+
+  "type": "object",
+
+  "properties": {
+    "tenant_id": {
+      "type": "string"
+    },
+
+    "camera_id": {
+      "type": "string"
+    },
+
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "frame_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+
+    "pipeline_version": {
+      "type": "string"
+    },
+
+    "model_version": {
+      "type": ["string", "null"]
+    },
+
+    "source": {
+      "type": "string"
+    }
+  },
+
+  "required": [
+    "camera_id",
+    "timestamp"
+  ]
+}

@@ -1,46 +1,43 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Project SRT Detection Contract",
+
   "type": "object",
-  "required": [
-    "schema_version",
-    "camera_id",
-    "frame_id",
-    "timestamp",
-    "detections"
-  ],
+
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
     "camera_id": {
       "type": "string"
     },
+
     "frame_id": {
       "type": "integer"
     },
+
     "timestamp": {
       "type": "string",
       "format": "date-time"
     },
+
     "detections": {
       "type": "array",
+
       "items": {
         "type": "object",
-        "required": [
-          "class_name",
-          "confidence",
-          "bbox"
-        ],
+
         "properties": {
-          "class_name": {
+          "detection_id": {
             "type": "string"
           },
+
+          "class": {
+            "type": "string"
+          },
+
           "confidence": {
             "type": "number",
             "minimum": 0,
             "maximum": 1
           },
+
           "bbox": {
             "type": "array",
             "minItems": 4,
@@ -49,8 +46,22 @@
               "type": "number"
             }
           }
-        }
+        },
+
+        "required": [
+          "detection_id",
+          "class",
+          "confidence",
+          "bbox"
+        ]
       }
     }
-  }
+  },
+
+  "required": [
+    "camera_id",
+    "frame_id",
+    "timestamp",
+    "detections"
+  ]
 }

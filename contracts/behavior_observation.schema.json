@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+
+  "type": "object",
+
+  "properties": {
+    "observation_id": {
+      "type": "string"
+    },
+
+    "camera_id": {
+      "type": "string"
+    },
+
+    "track_ids": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "trajectory_features": {
+      "type": "object"
+    },
+
+    "motion_features": {
+      "type": "object"
+    },
+
+    "pose_features": {
+      "type": ["object", "null"]
+    },
+
+    "interaction_features": {
+      "type": ["object", "null"]
+    },
+
+    "zone_features": {
+      "type": ["object", "null"]
+    },
+
+    "activity": {
+      "type": ["string", "null"]
+    },
+
+    "activity_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+
+    "context": {
+      "type": ["object", "null"]
+    },
+
+    "baseline_deviation": {
+      "type": ["number", "null"]
+    },
+
+    "anomaly_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+
+    "uncertainty": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+
+  "required": [
+    "observation_id",
+    "camera_id",
+    "timestamp"
+  ]
+}

@@ -1,39 +1,65 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Project SRT Alert Contract",
+
   "type": "object",
-  "required": [
-    "schema_version",
-    "alert_id",
-    "incident_id",
-    "severity",
-    "status",
-    "message"
-  ],
+
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
     "alert_id": {
       "type": "string"
     },
+
     "incident_id": {
+      "type": ["string", "null"]
+    },
+
+    "event_id": {
+      "type": ["string", "null"]
+    },
+
+    "camera_id": {
       "type": "string"
     },
+
     "severity": {
       "type": "string"
     },
+
+    "title": {
+      "type": "string"
+    },
+
+    "message": {
+      "type": "string"
+    },
+
+    "risk_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+
     "status": {
       "type": "string",
       "enum": [
         "OPEN",
         "ACKNOWLEDGED",
         "DISMISSED",
-        "ESCALATED"
+        "ESCALATED",
+        "RESOLVED"
       ]
     },
-    "message": {
-      "type": "string"
+
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
     }
-  }
+  },
+
+  "required": [
+    "alert_id",
+    "camera_id",
+    "severity",
+    "title",
+    "message"
+  ]
 }

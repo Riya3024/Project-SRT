@@ -1,30 +1,32 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Project SRT Incident Contract",
+
   "type": "object",
-  "required": [
-    "schema_version",
-    "incident_id",
-    "status",
-    "severity",
-    "event_ids"
-  ],
+
   "properties": {
-    "schema_version": {
-      "type": "string"
-    },
     "incident_id": {
       "type": "string"
     },
+
+    "tenant_id": {
+      "type": "string"
+    },
+
+    "incident_type": {
+      "type": "string"
+    },
+
     "status": {
       "type": "string",
       "enum": [
         "OPEN",
-        "ACKNOWLEDGED",
-        "RESOLVED",
-        "DISMISSED"
+        "INVESTIGATING",
+        "CONFIRMED",
+        "DISMISSED",
+        "RESOLVED"
       ]
     },
+
     "severity": {
       "type": "string",
       "enum": [
@@ -34,11 +36,47 @@
         "CRITICAL"
       ]
     },
+
+    "start_time": {
+      "type": "string",
+      "format": "date-time"
+    },
+
+    "end_time": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+
     "event_ids": {
       "type": "array",
       "items": {
         "type": "string"
       }
+    },
+
+    "camera_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "correlation_confidence": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 1
+    },
+
+    "timeline": {
+      "type": "array"
     }
-  }
+  },
+
+  "required": [
+    "incident_id",
+    "incident_type",
+    "status",
+    "severity",
+    "start_time"
+  ]
 }

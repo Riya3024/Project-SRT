@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-srt.local/contracts/reid.schema.json",
+  "title": "Project SRT Re-Identification Contract",
+  "description": "Contract for probabilistic cross-camera person re-identification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "association_id",
+    "source_camera_id",
+    "source_track_id",
+    "target_camera_id",
+    "target_track_id",
+    "similarity",
+    "confidence",
+    "timestamp",
+    "status"
+  ],
+  "properties": {
+    "association_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_camera_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_track_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "target_camera_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_track_id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "similarity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "time_gap_seconds": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "embedding_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "MATCH",
+        "POSSIBLE_MATCH",
+        "NO_MATCH",
+        "UNCERTAIN"
+      ]
+    }
+  }
+}

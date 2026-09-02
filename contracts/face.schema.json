@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-srt.local/contracts/face.schema.json",
+  "title": "Project SRT Face Contract",
+  "description": "Contract for face detection, embedding, and authorized-person matching.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "face_id",
+    "camera_id",
+    "timestamp",
+    "confidence",
+    "match_status"
+  ],
+  "properties": {
+    "face_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "camera_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "track_id": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bbox": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "number",
+          "minimum": 0
+        },
+        {
+          "type": "number",
+          "minimum": 0
+        }
+      ],
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "match_status": {
+      "type": "string",
+      "enum": [
+        "MATCHED",
+        "UNKNOWN",
+        "LOW_CONFIDENCE",
+        "NO_FACE"
+      ]
+    },
+    "matched_person_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "match_confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "embedding_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "watchlist_match": {
+      "type": "boolean"
+    },
+    "evidence_image": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}
