@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project SRT Context Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "camera_id",
+    "timestamp",
+    "context"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "camera_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "time_period",
+        "zone_type"
+      ],
+      "properties": {
+        "time_period": {
+          "type": "string",
+          "enum": [
+            "DAY",
+            "NIGHT"
+          ]
+        },
+        "zone_type": {
+          "type": "string"
+        },
+        "occupancy": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "is_restricted_zone": {
+          "type": "boolean"
+        },
+        "baseline_deviation": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

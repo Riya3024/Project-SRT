@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project SRT Incident Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "incident_id",
+    "status",
+    "severity",
+    "event_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "incident_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "ACKNOWLEDGED",
+        "RESOLVED",
+        "DISMISSED"
+      ]
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ]
+    },
+    "event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

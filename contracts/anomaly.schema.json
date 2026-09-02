@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project SRT Anomaly Contract",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "camera_id",
+    "timestamp",
+    "anomaly_score",
+    "is_anomalous"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "camera_id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "anomaly_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "is_anomalous": {
+      "type": "boolean"
+    },
+    "anomaly_type": {
+      "type": "string"
+    },
+    "reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
