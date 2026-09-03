@@ -1,0 +1,11 @@
+# Project SRT — shared development dependencies (Rule 11: testing, formatting, linting,
+# type checking). Install on top of requirements.txt: pip install -r requirements.txt -r requirements-dev.txt
+#
+# Versions verified against PyPI at the time this file was written (Rule 4).
+
+pytest==9.1.1             # test runner
+pytest-cov==7.1.0        # coverage reporting for pytest
+httpx==0.28.1            # required by FastAPI's TestClient for backend/tests/test_health.py
+black==26.5.1            # code formatter
+ruff==0.16.5             # linter (fast, replaces flake8/isort for this project)
+mypy==2.3.1               # static type checking

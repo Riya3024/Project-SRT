@@ -1,0 +1,51 @@
+# --- Secrets / environment (Rule 7) --------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# --- Node / Frontend ---------------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Editors / OS ------------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Evidence / media (never commit large binaries or real footage) --------
+*.mp4
+*.avi
+*.mkv
+media/
+evidence_local/
+
+# --- Model weights (pretrained weights are fetched, not committed - Rule 4/19) --
+*.pt
+*.pth
+*.onnx
+*.h5
+*.weights
+models/weights/
+*.tsbuildinfo

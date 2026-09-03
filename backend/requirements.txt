@@ -1,0 +1,15 @@
+# Project SRT — backend (FastAPI) runtime dependencies.
+# Install after the repo-root requirements.txt:
+#   pip install -r requirements.txt -r backend/requirements.txt -r requirements-dev.txt
+#
+# Phase 2 scope: only enough to run the single /health endpoint used to prove the
+# environment works (Rule 17 — health checks are observability foundation, not a
+# "business API"). No business endpoints, database models, or auth are implemented
+# here — that is Phase 3+ (M4).
+#
+# Versions verified against PyPI at the time this file was written (Rule 4).
+
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+pydantic==2.13.5
+pydantic-settings==2.15.0

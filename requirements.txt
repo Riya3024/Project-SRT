@@ -1,0 +1,11 @@
+# Project SRT — repo-wide Python runtime dependencies.
+# These are used by shared tooling (scripts/, tests/) rather than any single service.
+# Backend-specific runtime dependencies (FastAPI, uvicorn, etc.) live in backend/requirements.txt
+# and are layered on top of this file — install this one first.
+#
+# Versions verified against PyPI at the time this file was written (Rule 4 — no hallucinated
+# packages/versions). Pinned with `==` for reproducibility (Rule 6); bump deliberately, not via
+# unconstrained "latest".
+
+jsonschema==4.26.0      # used by scripts/validate_contracts.py to validate the 23 frozen contracts
+python-dotenv==1.2.3    # loads .env for local development configuration (Rule 16)

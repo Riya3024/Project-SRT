@@ -1,0 +1,49 @@
+[project]
+name = "project-srt"
+version = "0.1.0"
+description = "Project SRT (Smart Recognition and Tracking) - SIH26187"
+requires-python = ">=3.11,<3.13"
+
+# This pyproject.toml intentionally has no [build-system] section.
+# Project SRT is a monorepo of independently-owned services (backend/, services/*, tests/),
+# not a single installable Python package. Dependencies are managed via requirements.txt /
+# requirements-dev.txt (Rule 11: "modern, but simple for a six-member student team").
+# This file exists solely to hold shared tool configuration below.
+
+[tool.black]
+line-length = 100
+target-version = ["py311", "py312"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.venv
+  | node_modules
+  | frontend/dist
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "node_modules", "frontend/dist"]
+
+[tool.ruff.lint]
+# Conservative, high-value rule set only - avoid tool sprawl (Rule 15: "every dependency
+# must have a purpose"). E/F = pycodestyle/pyflakes core, I = import sort, UP = pyupgrade.
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+# Strictness is intentionally light in Phase 2 (no application code exists yet).
+# Each module owner tightens mypy settings for their own code as it's implemented.
+exclude = ["frontend/", "node_modules/", "\\.venv/"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"
