@@ -1,0 +1,13 @@
+# Project SRT — Combined Phase 1 (video/detection/tracking/behavior) dependencies.
+#
+# Kept separate from the repo's root requirements.txt / backend/requirements.txt
+# so you can review and merge deliberately (section 21 — dependency discipline).
+# Nothing here was verified installable in the authoring sandbox (no network
+# access there) — install and pin exact versions on your dev machine.
+
+opencv-python>=4.9
+ultralytics>=8.2        # includes YOLOv8/v11 pretrained weights + built-in ByteTrack
+numpy>=1.26
+# torch/torchvision: install per https://pytorch.org/get-started/locally/ for your
+# CUDA version (GTX 3050 -> CUDA 12.x build) or the CPU-only wheel. Do not just
+# `pip install torch` blindly — the correct command depends on your CUDA driver.
